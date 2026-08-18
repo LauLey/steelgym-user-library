@@ -30,7 +30,18 @@ function displayUsers() {
         createUserInfo(userCard, "Estado:", user.status);
         createUserInfo(userCard, "Id:", user.id);
 
+        const deleteButton = document.createElement("button");
+        userCard.appendChild(deleteButton);
+        deleteButton.textContent = "Eliminar";
+
+        deleteButton.addEventListener("click", () => {
+            const index = users.findIndex((item) => item.id === user.id);
+            users.splice(index, 1);
+            userCard.remove();
+        });
+
         usersContainer.appendChild(userCard);
+
     });
 }
 
