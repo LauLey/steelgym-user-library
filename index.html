@@ -8,8 +8,55 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-     <main>
+    <header class="header">
+        <button id="addUser">Añadir usuario</button>
+    </header>
+    
+    <main>
         <div id="users-container"></div>
     </main>
+    <dialog>
+        <form  action="#" method="post">
+            <fieldset>
+                <legend>Datos personales</legend>
+                <label class="required" for="name">Nombre Completo:</label>
+                <input type="text" id="name" placeholder="Juan..." name="name" required>
+
+                <label class="required" for="birthDate">Fecha de nacimiento</label>
+                <input type="date" id="birthDate" name="birthDate" required>
+            </fieldset>
+
+            <fieldset>
+                    <legend>Datos de contacto:</legend>
+                    <label for="phoneNumber">Número telefónico:</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber"
+                        placeholder="9511234567" pattern="[0-9]{10}"
+                        maxlength="10"
+                        inputmode="numeric" required>
+            </fieldset>
+
+            <fieldset>
+                    <legend>Datos de membresia:</legend>
+                    <label class="required" for="membership">Selleciona tu membresía</label>
+                    <select name="membership">
+                        <option value="Mensual" required>Mensual</option>
+                        <option value="Anual">Anual</option>
+                    </select>
+
+                    <h3>Estado de la membresía:</h3>
+                            <div class="option">
+                                <label for="active">Activa</label>
+                                <input type="radio" id="active" name="status" value="active" required>
+                            </div>
+                            <div class="option">
+                                <label for="inactive">No</label>
+                                <input type="radio" id="inactive" name="status" value="inactive">
+                            </div>
+            </fieldset>
+
+        </form>
+    </dialog>
 </body>
 </html>
+
+

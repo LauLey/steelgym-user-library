@@ -1,5 +1,14 @@
 const usersContainer = document.querySelector("#users-container");
 const users = [];
+const addUser = document.querySelector("#addUser");
+const body = document.querySelector("body");
+
+addUser.addEventListener("click", () => {
+    addUser.disabled = true;
+    const formUser = document.createElement("form");
+    body.appendChild(formUser);
+
+})
 
 function User(name, birthDate, phoneNumber, membership, status) {
     if (!new.target) {
@@ -39,6 +48,22 @@ function displayUsers() {
             users.splice(index, 1);
             userCard.remove();
         });
+
+        const statusButton = document.createElement("button");
+        userCard.appendChild(statusButton);
+        statusButton.textContent = user.status ? "Activo" : "Inactivo";
+
+        statusButton.addEventListener("click", () => {
+            if (user.status === true) {
+                user.status = false
+                statusButton.textContent = "Inactivo";
+            }
+
+            else {
+                user.status = true;
+                statusButton.textContent = "Activo"
+            }
+        })
 
         usersContainer.appendChild(userCard);
 
