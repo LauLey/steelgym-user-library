@@ -1,12 +1,11 @@
 const usersContainer = document.querySelector("#users-container");
 const users = [];
 const addUser = document.querySelector("#addUser");
-const body = document.querySelector("body");
+const dialog = document.querySelector("dialog");
 
 addUser.addEventListener("click", () => {
     addUser.disabled = true;
-    const formUser = document.createElement("form");
-    body.appendChild(formUser);
+    dialog.showModal();
 
 })
 
