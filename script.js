@@ -2,11 +2,32 @@ const usersContainer = document.querySelector("#users-container");
 const users = [];
 const addUser = document.querySelector("#addUser");
 const dialog = document.querySelector("dialog");
+const closeBtn = document.querySelector("#close");
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get("name");
+    const birthDate = data.get("birthDate");
+    const phoneNumber = data.get("phoneNumber");
+    const membership = data.get("membership");
+    const status = data.get("status");
+    const newUser = addUserToUsers(name, birthDate, phoneNumber, membership, status);
+    usersContainer.appendChild(createUserCard(newUser));
+    addUser.disabled = false;
+    dialog.close();
+})
 
 addUser.addEventListener("click", () => {
     addUser.disabled = true;
     dialog.showModal();
 
+})
+
+closeBtn.addEventListener("click", () => {
+    addUser.disabled = false;
+    dialog.close();
 })
 
 function User(name, birthDate, phoneNumber, membership, status) {
@@ -22,13 +43,12 @@ function User(name, birthDate, phoneNumber, membership, status) {
 }
 
 function addUserToUsers(name, birthDate, phoneNumber, membership, status) {
-  const NewUser = new User(name, birthDate, phoneNumber, membership, status);
-  users.push(NewUser);
+  const newUser = new User(name, birthDate, phoneNumber, membership, status);
+  users.push(newUser);
+  return newUser;
 }
 
-
-function displayUsers() {
-    users.forEach((user) => {
+function createUserCard(user) {
         const userCard = document.createElement("div");
 
         createUserInfo(userCard, "Nombre:", user.name);
@@ -64,8 +84,12 @@ function displayUsers() {
             }
         })
 
-        usersContainer.appendChild(userCard);
+        return userCard;
+}
 
+function displayUsers() {
+    users.forEach((user) => {
+        usersContainer.appendChild(createUserCard(user));
     });
 }
 
