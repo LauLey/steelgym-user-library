@@ -12,7 +12,7 @@ form.addEventListener("submit", (e) => {
     const birthDate = data.get("birthDate");
     const phoneNumber = data.get("phoneNumber");
     const membership = data.get("membership");
-    const status = data.get("status");
+    const status = data.get("status") === "active";
     const newUser = addUserToUsers(name, birthDate, phoneNumber, membership, status);
     usersContainer.appendChild(createUserCard(newUser));
     addUser.disabled = false;
@@ -59,7 +59,6 @@ function createUserCard(user) {
         createUserInfo(userCard, "Fecha de nacimiento:", user.birthDate);
         createUserInfo(userCard, "Teléfono:", user.phoneNumber);
         createUserInfo(userCard, "Membresía:", user.membership);
-        createUserInfo(userCard, "Estado:", user.status);
         createUserInfo(userCard, "Id:", user.id);
 
         const deleteButton = document.createElement("button");

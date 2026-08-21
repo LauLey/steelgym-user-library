@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-title: "Bebas Neue", sans-serif;
+    --font-text: "Montserrat", sans-serif;
+
+    --background: #f5f5f5;
+    --surface: #ffffff;
+
+    --primary: #FFD000;
+
+    --text: #111111;
+    --text-secondary: #555555;
+
+    --border: #D8D8D8;
+    --border-focus: #FFD000;
+
+    --error: #D93025;
+    --success: #2E7D32;
+
+    --shadow: 0 8px 18px rgba(0, 0, 0, .12);
+    --shadow-focus: 0 0 8px rgba(255, 208, 0, .35);
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--font-text);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    padding: .9rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #111111;
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    letter-spacing: .05rem;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Botón principal */
+
+#addUser {
+    width: 90%;
+    max-width: 350px;
+}
+
+/* =========================
+   USERS CONTAINER
+========================= */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+#users-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* =========================
+   USER CARDS
+========================= */
+
+/*
+   Las tarjetas son div creados
+   dinámicamente por JavaScript.
+*/
+
+#users-container > div {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+#users-container > div p {
+    margin: .7rem 0;
+    color: var(--text-secondary);
+    font-size: .95rem;
+    line-height: 1.5;
+}
+
+#users-container > div p:first-child {
+    margin-top: 0;
+    color: var(--text);
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    letter-spacing: .04rem;
+}
+
+/* Botones dentro de cada tarjeta */
+
+#users-container > div button {
+    width: 48%;
+    margin-top: 1rem;
+    font-size: 1.15rem;
+}
+
+#users-container > div button + button {
+    margin-left: 2%;
+}
+
+/* =========================
+   DIALOG
+========================= */
+
+dialog {
+    width: 90%;
+    max-width: 700px;
+    padding: 2rem;
+    border: none;
+    border-radius: 12px;
+    background: var(--background);
+    color: var(--text);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, .65);
+}
+
+/* Botón cerrar */
+
+#close {
+    display: block;
+    width: auto;
+    margin-left: auto;
+    margin-bottom: 1rem;
+    padding: .6rem 1.2rem;
+    background: var(--text);
+    color: var(--surface);
+    font-size: 1.1rem;
+}
+
+/* =========================
+   FORM
+========================= */
+
+form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+fieldset {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+legend {
+    padding: 0 .5rem;
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    color: var(--primary);
+    letter-spacing: .08rem;
+}
+
+.required::after {
+    content: "*";
+    margin-left: .2rem;
+    color: var(--error);
+}
+
+label {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+select {
+    width: 100%;
+    margin-top: .4rem;
+    margin-bottom: 1rem;
+    padding: .8rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--font-text);
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus {
+    border: 2px solid var(--border-focus);
+    outline: none;
+    box-shadow: var(--shadow-focus);
+}
+
+/* Validación HTML */
+
+input:user-valid,
+select:user-valid {
+    border: 2px solid var(--success);
+}
+
+input:user-invalid,
+select:user-invalid {
+    border: 2px solid var(--error);
+}
+
+/* =========================
+   MEMBERSHIP / RADIO BUTTONS
+========================= */
+
+h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    letter-spacing: .04rem;
+    color: var(--text);
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .7rem;
+}
+
+.option input {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+   FORM SUBMIT
+========================= */
+
+form button[type="submit"] {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 1rem;
+    }
+
+    main {
+        width: 92%;
+        margin: 1.5rem auto;
+    }
+
+    #users-container {
+        grid-template-columns: 1fr;
+    }
+
+    dialog {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    fieldset {
+        padding: 1rem;
+    }
+
+    legend {
+        font-size: 1.5rem;
+    }
+
+    #users-container > div button {
+        font-size: 1rem;
+    }
+}
