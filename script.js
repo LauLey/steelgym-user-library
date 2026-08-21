@@ -42,6 +42,10 @@ function User(name, birthDate, phoneNumber, membership, status) {
     this.id = crypto.randomUUID()
 }
 
+User.prototype.toggleStatus = function () {
+    this.status = !this.status;
+};
+
 function addUserToUsers(name, birthDate, phoneNumber, membership, status) {
   const newUser = new User(name, birthDate, phoneNumber, membership, status);
   users.push(newUser);
@@ -73,15 +77,8 @@ function createUserCard(user) {
         statusButton.textContent = user.status ? "Activo" : "Inactivo";
 
         statusButton.addEventListener("click", () => {
-            if (user.status === true) {
-                user.status = false
-                statusButton.textContent = "Inactivo";
-            }
-
-            else {
-                user.status = true;
-                statusButton.textContent = "Activo"
-            }
+            user.toggleStatus();
+        statusButton.textContent = user.status ? "Activo" : "Inactivo";
         })
 
         return userCard;
