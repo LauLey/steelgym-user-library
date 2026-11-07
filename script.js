@@ -30,21 +30,20 @@ closeBtn.addEventListener("click", () => {
     dialog.close();
 })
 
-function User(name, birthDate, phoneNumber, membership, status) {
-    if (!new.target) {
-    throw Error("You must use the 'new' operator to call the constructor");
-  }
-    this.name = name;
-    this.birthDate = birthDate;
-    this.phoneNumber = phoneNumber;
-    this.membership = membership;
-    this.status = status;
-    this.id = crypto.randomUUID()
-}
+class User {
+    constructor(name, birthDate, phoneNumber, membership, status) {
+        this.name = name;
+        this.birthDate = birthDate;
+        this.phoneNumber = phoneNumber;
+        this.membership = membership;
+        this.status = status;
+        this.id = crypto.randomUUID()
 
-User.prototype.toggleStatus = function () {
-    this.status = !this.status;
-};
+        toggleStatus() {
+            this.status = !this.status
+        }
+    }
+}
 
 function addUserToUsers(name, birthDate, phoneNumber, membership, status) {
   const newUser = new User(name, birthDate, phoneNumber, membership, status);
