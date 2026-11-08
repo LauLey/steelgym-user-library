@@ -38,11 +38,11 @@ class User {
         this.membership = membership;
         this.status = status;
         this.id = crypto.randomUUID()
+    }
 
-        toggleStatus() {
+    toggleStatus() {
             this.status = !this.status
         }
-    }
 }
 
 function addUserToUsers(name, birthDate, phoneNumber, membership, status) {
